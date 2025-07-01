@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виктория Александровна - Учитель музыки</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fff9fb, #ffecf1, #fff);
+            color: #5a3d5c;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Ноты в фоне */
+        body::before {
+            content: "♪♫♩♬";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 3rem;
+            color: rgba(255, 182, 193, 0.1);
+            z-index: -1;
+            line-height: 1.8;
+            opacity: 0.3;
+            transform: rotate(-5deg);
+        }
+        
+        .business-card {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(205, 92, 92, 0.2);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Фортепианные клавиши */
+        .piano-top {
+            height: 25px;
+            background: repeating-linear-gradient(
+                to right,
+                #000,
+                #000 20px,
+                #fff 20px,
+                #fff 40px
+            );
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 30px 30px;
+            position: relative;
+            background: linear-gradient(to bottom, #ffb6c1, #ffc0cb);
+        }
+        
+        .photo-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 8px solid rgba(255, 255, 255, 0.7);
+            margin: 0 auto 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            background: #fff;
+        }
+        
+        .photo {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 5rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .position {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .experience {
+            background: rgba(255, 255, 255, 0.9);
+            color: #e75480;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+        
+        .about, .benefits {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #e75480;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ffb6c1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        h2 i {
+            font-size: 1.8rem;
+        }
+        
+        .about-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #5a3d5c;
+            margin-bottom: 25px;
+        }
+        
+        .specialization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .specialty {
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            padding: 15px 15px 15px 50px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: #fff5f7;
+            position: relative;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #ffb6c1;
+        }
+        
+        .benefits-list li:hover {
+            transform: translateX(10px);
+            background: #ffeef2;
+        }
+        
+        .benefits-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #ff69b4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .price-section {
+            background: linear-gradient(to right, #ffb6c1, #ff69b4);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .price-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+            padding: 15px 50px;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+        
+        .price-note {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background: #5a3d5c;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .contact-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #ffb6c1;
+        }
+        
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-link:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copyright {
+            margin-top: 25px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Фортепианные клавиши внизу */
+        .piano-bottom {
+            height: 25px;
+            background: repeating-linear-gradient(
+                to right,
+                #000,
+                #000 20px,
+                #fff 20px,
+                #fff 40px
+            );
+            position: relative;
+        }
+        
+        .piano-bottom::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 15px;
+            height: 50px;
+            background: #000;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .piano-bottom::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 55px;
+            width: 15px;
+            height: 50px;
+            background: #000;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes floatNote {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.3rem; }
+            .position { font-size: 1.3rem; }
+            .content { padding: 25px; }
+            .photo-container {
+                width: 170px;
+                height: 170px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .position { font-size: 1.1rem; }
+            .content { padding: 20px 15px; }
+            .photo-container {
+                width: 150px;
+                height: 150px;
+            }
+            .price-amount { font-size: 2.5rem; }
+            .whatsapp-link { font-size: 1.3rem; padding: 15px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="piano-top"></div>
+        
+        <div class="header">
+            <div class="photo-container">
+                <div class="photo">
+                    <i class="fas fa-music"></i>
+                </div>
+            </div>
+            <h1>Виктория Александровна</h1>
+            <div class="position">Учитель музыки</div>
+            <div class="experience">Стаж 20 лет</div>
+        </div>
+        
+        <div class="content">
+            <div class="about">
+                <h2><i class="fas fa-user"></i> Обо мне</h2>
+                <p class="about-text">
+                    Профессиональный педагог с 20-летним опытом преподавания музыки. 
+                    Моя миссия - открыть мир музыки для каждого ученика, развить творческий потенциал 
+                    и привить любовь к искусству. Я верю, что музыка - это универсальный язык, 
+                    который объединяет людей и обогащает нашу жизнь.
+                </p>
+                
+                <h2><i class="fas fa-graduation-cap"></i> Специализация</h2>
+                <div class="specialization">
+                    <div class="specialty">
+                        <i class="fas fa-users"></i> Хоровое пение
+                    </div>
+                    <div class="specialty">
+                        <i class="fas fa-piano"></i> Фортепиано
+                    </div>
+                </div>
+            </div>
+            
+            <div class="benefits">
+                <h2><i class="fas fa-star"></i> Плюсы занятий</h2>
+                <ul class="benefits-list">
+                    <li>Индивидуальный подход к каждому ученику</li>
+                    <li>Обучение с любого уровня подготовки</li>
+                    <li>Развитие музыкального слуха и чувства ритма</li>
+                    <li>Подготовка к выступлениям и конкурсам</li>
+                    <li>Удобное расписание занятий</li>
+                    <li>Комфортная творческая атмосфера</li>
+                    <li>Уроки для детей и взрослых</li>
+                    <li>Развитие творческого мышления</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="price-section">
+            <div class="price-title">Стоимость занятий</div>
+            <div class="price-amount">от 1500 рублей</div>
+            <p class="price-note">*Цена зависит от продолжительности урока и программы обучения</p>
+        </div>
+        
+        <div class="piano-bottom"></div>
+        
+        <footer>
+            <div class="contact-title">Записаться на занятие</div>
+            <a href="https://wa.me/79104257833" class="whatsapp-link" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp: +7 910 425 7833
+            </a>
+            <p class="copyright">© 2023 Виктория Александровна. Учитель музыки. Все права защищены.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Создаем плавающие ноты
+        function createFloatingNotes() {
+            const notes = ["♪", "♫", "♩", "♬"];
+            const body = document.body;
+            
+            for (let i = 0; i < 15; i++) {
+                const note = document.createElement('div');
+                note.textContent = notes[Math.floor(Math.random() * notes.length)];
+                note.style.position = 'fixed';
+                note.style.left = Math.random() * 100 + 'vw';
+                note.style.top = '100vh';
+                note.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                note.style.color = 'rgba(255, 182, 193, ' + (Math.random() * 0.5 + 0.3) + ')';
+                note.style.zIndex = '1';
+                note.style.pointerEvents = 'none';
+                note.style.userSelect = 'none';
+                
+                // Анимация
+                note.style.animation = `floatNote ${Math.random() * 10 + 15}s linear infinite`;
+                note.style.animationDelay = Math.random() * 5 + 's';
+                
+                body.appendChild(note);
+            }
+        }
+        
+        // Запускаем создание нот после загрузки страницы
+        window.addEventListener('load', createFloatingNotes);
+    </script>
+</body>
+</html>
+                    
